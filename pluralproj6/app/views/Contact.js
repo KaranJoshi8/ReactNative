@@ -5,9 +5,9 @@ import {
   View,
   TextInput,
   TouchableHighlight,
-  Alert
+  Alert,
+  ImageBackground
 } from "react-native";
-import { Header } from "../sections/Header.js";
 import { StackNavigator } from "react-navigation";
 
 export class Contact extends React.Component {
@@ -20,21 +20,30 @@ export class Contact extends React.Component {
     this.state = {
       msg: "Enter The Message",
       name: "Enter the Name",
-      email: "Enter your Email Address"
+      email: "Enter your Email Address",
+      output:"Thank you for the contact"
     };
   }
 
   clearFields = () => this.setState({ name: "", msg: "", email: "" });
 
   sendMessage = () => {
-    Alert.alert(this.state.name, this.state.msg);
+    Alert.alert(this.state.name, this.state.output);
     this.props.navigation.goBack();
   };
 
   render() {
     return (
+      <ImageBackground
+      source={{
+        uri:
+          "https://htmlcolorcodes.com/assets/images/html-color-codes-color-tutorials-hero-00e10b1f.jpg"
+      }}
+      style={styles.backgroundImage}
+    >
+      
       <View style={styles.container}>
-        <Header message="Press to Login" />
+       
         <Text style={styles.heading}>Contact Us</Text>
         <TextInput
           style={styles.inputs}
@@ -53,28 +62,39 @@ export class Contact extends React.Component {
           onChangeText={text => this.setState({ email: text })}
           value={this.state.email}
         />
-
-        <TouchableHighlight onPress={this.sendMessage} underlayColor="#31e981">
-          <Text style={styles.buttons}>Send Message</Text>
+      <View style={styles.btnview}>
+      
+        <TouchableHighlight onPress={this.sendMessage} underlayColor="#fff">
+          <Text style={styles.buttons}>Send Message    </Text>
         </TouchableHighlight>
 
-        <TouchableHighlight onPress={this.clearFields} underlayColor="#31e981">
-          <Text style={styles.buttons}>Reset Message </Text>
+        <TouchableHighlight onPress={this.clearFields} underlayColor="#fff">
+          <Text style={styles.buttons}>   Reset Message </Text>
         </TouchableHighlight>
-      </View>
+        </View>
+       
+       </View>
+       </ImageBackground>      
     );
   }
 }
 
 const styles = StyleSheet.create({
+  backgroundImage: {
+    flex: 1,
+    justifyContent: "center",
+    resizeMode: "cover"
+  },
   container: {
     flex: 1,
     alignItems:'center',
-    paddingBottom:'45%'
+    paddingBottom:'45%',
   },
   heading:{
-    fontSize: 16,
-    flex:1
+    fontSize: 36,
+    flex:1,
+    fontFamily: 'Georgia',
+    color:'#fff'
   },
   inputs:{
     flex:1,
@@ -101,5 +121,9 @@ const styles = StyleSheet.create({
   buttons:{
     marginTop:15,
     fontSize:16
+  },
+  btnview:{
+    flexDirection:'row',
+
   }
 });

@@ -13,7 +13,7 @@ export class Header extends React.Component {
     });
   };
   render() {
-    let display = this.state.isLoggedIn ? "Sample User" : this.props.message;
+    let display = this.state.isLoggedIn ? "Karan Joshi" : this.props.message;
     return (
       <View style={styles.headStyle}>
         <Image 

@@ -1,0 +1,4 @@
+The component for route 'ContactRT' must be a React component. For example:
+
+solution: The class which contains export default will not have curly braces in its import.
+	  the class which does not contain the export default class will contain the braces in it.

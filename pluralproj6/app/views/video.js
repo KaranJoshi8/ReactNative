@@ -10,7 +10,7 @@ import {
 export class Video extends React.Component {
   static navigationOptions = {
     header: null
-  };
+  };    
 
   constructor(props) {
     super(props);
@@ -19,13 +19,14 @@ export class Video extends React.Component {
 
   componentDidMount() {
     return fetch(
-      "https://app.pluralsight.com/player?course=react-native-fundamentals&author=reggie-dawson&name=2e250659-11af-4df2-88cd-f19340ea6ca4&clip=2&mode=live"
+      "https://www.googleapis.com/youtube/v3/search?part=snippet&q=pluralsight&type=video&key=AIzaSyBgNOL1Sj1GRI2ovHLgOQ4PNNpdx0xDhLQ"
     )
       .then(response => response.json())
       .then(response => {
         this.state({
           listLoaded: true,
           videoList: Array.from(responseJson.items)
+          
         });
       })
       .catch(error => {
@@ -34,6 +35,7 @@ export class Video extends React.Component {
   }
 
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View>
         {this.state.listLoaded && (
@@ -42,10 +44,12 @@ export class Video extends React.Component {
               data={this.state.videoList}
               renderItem={({ item }) => (
                 <TubeItem
+                navigate={navigate} 
                   id={item.id.videoId}
                   title={item.snippet.title}
                   imageSrc={item.snippet.thumbnails.high.url}
                 />
+               
               )}
             />
           </View>
@@ -62,7 +66,7 @@ export class Video extends React.Component {
 
 export class TubeItem extends React.Component {
   onPress = () => {
-    console.log(this.props.id);
+      this.props.navigate('VideoDetailRT',{ytubeID:this.props.id})
   };
 
   render() {
