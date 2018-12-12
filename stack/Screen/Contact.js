@@ -21,7 +21,7 @@ export default class Contact extends React.Component {
     this.state = {
       msg: "Enter The Message",
       name: "Enter the Name",
-      email: "Enter your Email Address",
+      
       output: "Thank you for the contact",
       email: "",
       validated: false
@@ -59,6 +59,7 @@ export default class Contact extends React.Component {
             onChangeText={text => this.setState({ name: text })}
             value={this.state.name}
           />
+          <Text>{this.state.name}</Text>
           <TextInput
             style={styles.multiInput}
             onChangeText={text => this.setState({ msg: text })}

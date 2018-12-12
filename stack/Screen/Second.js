@@ -1,36 +1,65 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View,TextInput,ImageBackground } from "react-native";
 import { Dice } from "./Home";
 
 export default class App extends Component {
+
+  constructor(props){
+    super(props);
+    this.state={
+      sname:""
+    }
+  }
   thirdscreen = () => {
     this.props.navigation.navigate("ContactRT");
   };
 
   render() {
     return (
+      <ImageBackground
+        source={{
+          uri:
+            "https://i.pinimg.com/originals/7d/e0/46/7de046dc69627ece821f2aba587a646b.jpg"
+        }}
+        style={styles.backgroundImage}
+      >
       <View style={styles.container}>
-        <Text o style={styles.welcome}>
+      
+      
+      <Dice />
+
+
+        <Text  style={styles.welcome}>
           Welcome to Second Activity
         </Text>
+        <TextInput
+        placeholder={"Enter the second name"}
+        style={styles.inputs}
+        onChangeText={stxt => this.setState({sname:stxt})}
+        value={this.state.sname}
+        />
+        <Text>{this.state.sname}</Text>
         <Text onPress={this.thirdscreen} style={styles.next}>
-          Go to Next Page
+          Go to Next Page>
         </Text>
-        <Dice />
+        
       </View>
+      </ImageBackground>
     );
   }
 }
-Dice.defaultProps = {
-  name: "Second"
-};
+
 
 const styles = StyleSheet.create({
+  backgroundImage: {
+    flex: 1,
+    justifyContent: "center",
+    resizeMode: "cover"
+  },
   container: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#F5FCFF"
   },
   next: {
     fontSize: 30,
@@ -46,5 +75,13 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#333333",
     marginBottom: 5
-  }
+  },
+  inputs: {
+    backgroundColor: "#fff",
+    width: "90%",
+    height:"10%",
+    fontSize: 20,
+  },
+  
+
 });
