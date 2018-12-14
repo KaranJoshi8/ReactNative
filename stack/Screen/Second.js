@@ -1,14 +1,19 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View,TextInput,ImageBackground } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  ImageBackground
+} from "react-native";
 import { Dice } from "./Home";
 
 export default class App extends Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state={
-      sname:""
-    }
+    this.state = {
+      sname: ""
+    };
   }
   thirdscreen = () => {
     this.props.navigation.navigate("ContactRT");
@@ -23,32 +28,25 @@ export default class App extends Component {
         }}
         style={styles.backgroundImage}
       >
-      <View style={styles.container}>
-      
-      
-      <Dice />
+        <View style={styles.container}>
+          <Dice />
 
-
-        <Text  style={styles.welcome}>
-          Welcome to Second Activity
-        </Text>
-        <TextInput
-        placeholder={"Enter the second name"}
-        style={styles.inputs}
-        onChangeText={stxt => this.setState({sname:stxt})}
-        value={this.state.sname}
-        />
-        <Text>{this.state.sname}</Text>
-        <Text onPress={this.thirdscreen} style={styles.next}>
-          Go to Next Page>
-        </Text>
-        
-      </View>
+          <Text style={styles.welcome}>Welcome to Second Activity</Text>
+          <TextInput
+            placeholder={"Enter the second name"}
+            style={styles.inputs}
+            onChangeText={stxt => this.setState({ sname: stxt })}
+            value={this.state.sname}
+          />
+          <Text>{this.state.sname}</Text>
+          <Text onPress={this.thirdscreen} style={styles.next}>
+            Go to Next Page>
+          </Text>
+        </View>
       </ImageBackground>
     );
   }
 }
-
 
 const styles = StyleSheet.create({
   backgroundImage: {
@@ -59,7 +57,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "center"
   },
   next: {
     fontSize: 30,
@@ -79,9 +77,7 @@ const styles = StyleSheet.create({
   inputs: {
     backgroundColor: "#fff",
     width: "90%",
-    height:"10%",
-    fontSize: 20,
-  },
-  
-
+    height: "10%",
+    fontSize: 20
+  }
 });

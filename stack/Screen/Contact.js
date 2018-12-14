@@ -21,7 +21,7 @@ export default class Contact extends React.Component {
     this.state = {
       msg: "Enter The Message",
       name: "Enter the Name",
-      
+
       output: "Thank you for the contact",
       email: "",
       validated: false
@@ -31,16 +31,13 @@ export default class Contact extends React.Component {
   clearFields = () => this.setState({ name: "", msg: "", email: "" });
 
   sendMessage = () => {
-   
-
     const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (reg.test(this.state.email) === true) {
       Alert.alert(this.state.name, this.state.output);
-    this.props.navigation.goBack();
+      this.props.navigation.goBack();
     } else {
       alert();
     }
-
   };
 
   render() {

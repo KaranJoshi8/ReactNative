@@ -1,7 +1,7 @@
 import { StackNavigator } from "react-navigation";
-import  Home  from "./Screen/Home";
-import  Second from "./Screen/Second";
-import  Contact  from "./Screen/Contact";
+import Home from "./Screen/Home";
+import Second from "./Screen/Second";
+import Contact from "./Screen/Contact";
 import Registration from "./Screen/Registration";
 
 export default StackNavigator({
@@ -9,29 +9,28 @@ export default StackNavigator({
     screen: Home,
 
     navigationOptions: () => ({
-      title:'Home',
+      title: "Home"
     })
-
   },
-  SecondRT:{
+  SecondRT: {
     screen: Second,
 
     navigationOptions: () => ({
-      title:'Second',
+      title: "Second"
     })
   },
-  ContactRT:{
+  ContactRT: {
     screen: Contact,
 
     navigationOptions: () => ({
-      title:'Contact',
+      title: "Contact"
     })
   },
-  RegRT:{
+  RegRT: {
     screen: Registration,
 
     navigationOptions: () => ({
-      title:'Registration',
+      title: "Registration"
     })
   }
 });

@@ -4,7 +4,8 @@ import {
   Text,
   View,
   TextInput,
-  ImageBackground
+  ImageBackground,
+  ScrollView
 } from "react-native";
 
 export default class App extends Component {
@@ -23,6 +24,16 @@ export default class App extends Component {
   }
 
   render() {
+    var myloop = [];
+
+    for (let i = 0; i < 10; i++) {
+      myloop.push(
+        <View key={i}>
+          <Text style={styles.loop}>{i}</Text>
+        </View>
+      );
+    }
+
     return (
       <ImageBackground
         source={{
@@ -31,27 +42,30 @@ export default class App extends Component {
         }}
         style={styles.backgroundImage}
       >
-        <View style={styles.container}>
-          <Text style={styles.welcome}>Welcome to React Native!</Text>
-          <Dice name="Karan" />
-          <Dice name="Joshi" />
-          <Dice />
+        <ScrollView contentContainerStyle={styles.contentContainer}>
+          <View style={styles.container}>
+            <Text style={styles.welcome}>Welcome to the Demo project!</Text>
+            <Dice name="Karan" />
+            <Dice name="Joshi" />
+            <Dice />
 
-          <TextInput
-            style={styles.inputs}
-            onChangeText={txt => this.setState({ fname: txt })}
-            placeholder="Type the first name"
-            value={this.state.fname}
-          />
-          <Text>{this.state.fname}</Text>
-          <Text onPress={this.nextscreen} style={styles.next}>
-            Go to Next Page>
-          </Text>
+            <TextInput
+              style={styles.inputs}
+              onChangeText={txt => this.setState({ fname: txt })}
+              placeholder="Type the first name"
+              value={this.state.fname}
+            />
 
-          <Text onPress={this.regscreen} style={styles.next}>
-            Go to Registration Page>
-          </Text>
-        </View>
+            <Text>{this.state.fname}</Text>
+            <Text onPress={this.nextscreen} style={styles.next}>
+              Go to Next Page>
+            </Text>
+            <Text onPress={this.regscreen} style={styles.next}>
+              Go to Registration Page>
+            </Text>
+            {myloop}
+          </View>
+        </ScrollView>
       </ImageBackground>
     );
   }
@@ -60,7 +74,7 @@ export default class App extends Component {
 export class Dice extends Component {
   render() {
     return (
-      <View >
+      <View>
         <Text style={styles.dice}>Hi {this.props.name}</Text>
       </View>
     );
@@ -106,7 +120,9 @@ const styles = StyleSheet.create({
   inputs: {
     backgroundColor: "#fff",
     width: "90%",
-    height: "10%",
     fontSize: 20
+  },
+  loop: {
+    color: "#fff"
   }
 });
