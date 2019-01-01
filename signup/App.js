@@ -1,3 +1,5 @@
+// Created By Karan Joshi on 1-1-2019
+// Imports
 import React, { Component } from "react";
 import {
   Text,
@@ -8,9 +10,9 @@ import {
   ImageBackground,
   ScrollView
 } from "react-native";
-import Image from "./images/bg.jpg";
+import Image from "./assets/bg.jpg";
 import ValidateComponent from "react-native-form-validator";
-
+//class and constructor
 export default class App extends ValidateComponent {
   constructor(props) {
     super(props);
@@ -21,7 +23,7 @@ export default class App extends ValidateComponent {
       confirmpassword: ""
     };
   }
-
+// Validation
   onsubmit = () => {
     // const nameval = /^[a-zA-Z][a-zA-Z ]*$/;
     if (
@@ -50,89 +52,92 @@ export default class App extends ValidateComponent {
 
   render() {
     return (
-      <ImageBackground source={Image} style={styles.backgroundImage}>
-      <ScrollView contentContainerStyle={styles.contentContainer}>
-        <View style={styles.container}>
-          <Text style={styles.header}>SIGN UP</Text>
-        </View>
+		//for background Image
+      <ImageBackground source={Image} style={styles.backgroundImage}> 
+	{/* // for Scrolling */}
+        <ScrollView contentContainerStyle={styles.contentContainer}>
+	{/* Header View */}
+          <View style={styles.container}>
+            <Text style={styles.header}>SIGN UP</Text>
+          </View>
+	{/* form Attributes */}
+          <Text style={styles.textmargin}>USERNAME</Text>
+          <View style={styles.container1}>
+            <TextInput
+              style={styles.textInput}
+              placeholder={" username129"}
+              placeholderTextColor="#fff"
+              maxLength={25}
+              onChangeText={txtname => this.setState({ fname: txtname })}
+              value={this.state.fname}
+            />
+          </View>
+          <Text style={styles.textmargin}>EMAIL</Text>
+          <View style={styles.container1}>
+            <TextInput
+              style={styles.textInput}
+              placeholder={" username@me.com"}
+              placeholderTextColor="#fff"
+              maxLength={80}
+              onChangeText={femail => this.setState({ email: femail })}
+              value={this.state.email}
+            />
+          </View>
+          <Text style={styles.textmargin}>PASSWORD</Text>
+          <View style={styles.container1}>
+            <TextInput
+              style={styles.textInput}
+              placeholder={" ***************"}
+              placeholderTextColor="#fff"
+              maxLength={30}
+              secureTextEntry={true}
+              onChangeText={pswd => this.setState({ password: pswd })}
+              // value={this.state.password}
+            />
+          </View>
+          <Text style={styles.textmargin}>CONFIRM PASSWORD</Text>
+          <View style={styles.container1}>
+            <TextInput
+              style={styles.textInput}
+              placeholder={" ***************"}
+              placeholderTextColor="#fff"
+              maxLength={30}
+              secureTextEntry={true}
+              onChangeText={pswd => this.setState({ confirmpassword: pswd })}
+              // value={this.state.confirmpassword}
+            />
+          </View>
+	{/* Button For Confirm */}
+          <View style={styles.container1}>
+            <TouchableOpacity style={styles.touch} onPress={this.onsubmit}>
+              <Text style={styles.touchtext}> CONFIRM </Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.alreadyuser}>
+            <Text style={{ color: "#fff" }}>already User? </Text>
+            <TouchableOpacity>
+              <Text style={{ color: "#fff", textDecorationLine: "underline" }}>
+                Click Here
+              </Text>
+            </TouchableOpacity>
+          </View>
 
-        <Text style={styles.textmargin}>USERNAME</Text>
-        <View style={styles.container1}>
-          <TextInput
-            style={styles.textInput}
-            placeholder={" username129"}
-            placeholderTextColor="#fff"
-            maxLength={25}
-            onChangeText={txtname => this.setState({ fname: txtname })}
-            value={this.state.fname}
-          />
-        </View>
-        <Text style={styles.textmargin}>EMAIL</Text>
-        <View style={styles.container1}>
-          <TextInput
-            style={styles.textInput}
-            placeholder={" username@me.com"}
-            placeholderTextColor="#fff"
-            maxLength={80}
-            onChangeText={femail => this.setState({ email: femail })}
-            value={this.state.email}
-          />
-        </View>
-        <Text style={styles.textmargin}>PASSWORD</Text>
-        <View style={styles.container1}>
-          <TextInput
-            style={styles.textInput}
-            placeholder={" ***************"}
-            placeholderTextColor="#fff"
-            maxLength={30}
-            secureTextEntry={true}
-            onChangeText={pswd => this.setState({ password: pswd })}
-            // value={this.state.password}
-          />
-        </View>
-        <Text style={styles.textmargin}>CONFIRM PASSWORD</Text>
-        <View style={styles.container1}>
-          <TextInput
-            style={styles.textInput}
-            placeholder={" ***************"}
-            placeholderTextColor="#fff"
-            maxLength={30}
-            secureTextEntry={true}
-            onChangeText={pswd => this.setState({ confirmpassword: pswd })}
-            // value={this.state.confirmpassword}
-          />
-        </View>
-
-        <View style={styles.container1}>
-          <TouchableOpacity style={styles.touch} onPress={this.onsubmit}>
-            <Text style={styles.touchtext}> CONFIRM </Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.alreadyuser}>
-          <Text style={{ color: "#fff" }}>already User? </Text>
-          <TouchableOpacity>
-            <Text style={{ color: "#fff", textDecorationLine: "underline" }}>
-              Click Here
-            </Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.terms}>
-          <TouchableOpacity>
-            <Text style={{ color: "#fff", paddingRight: 40 }}>
-              Privacy Policy{" "}
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={{ color: "#fff" }}>Terms Of Service</Text>
-          </TouchableOpacity>
-        </View>
+          <View style={styles.terms}>
+            <TouchableOpacity>
+              <Text style={{ color: "#fff", paddingRight: 40 }}>
+                Privacy Policy{" "}
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Text style={{ color: "#fff" }}>Terms Of Service</Text>
+            </TouchableOpacity>
+          </View>
         </ScrollView>
       </ImageBackground>
     );
   }
 }
-
+// Stylesheet
 const styles = StyleSheet.create({
   backgroundImage: {
     flex: 1,
