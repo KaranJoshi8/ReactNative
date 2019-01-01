@@ -16,7 +16,8 @@ export default class Registration extends ValidateComponent {
       fname: "",
       contact: "",
       email: "",
-      password: ""
+      password: "",
+      
     };
   }
 
