@@ -6,12 +6,16 @@ import {
   StyleSheet,
   View,
   TextInput,
+  Image,
   TouchableOpacity,
   ImageBackground,
-  ScrollView
+  ScrollView,
 } from "react-native";
-import Image from "./assets/bg.jpg";
+import Images from "./assets/bg.jpg";
+import Logo from "./assets/instagram.png";
+import Copyright from "./assets/copyright.png";
 import ValidateComponent from "react-native-form-validator";
+
 //class and constructor
 export default class App extends ValidateComponent {
   constructor(props) {
@@ -23,7 +27,8 @@ export default class App extends ValidateComponent {
       confirmpassword: ""
     };
   }
-// Validation
+
+  // Validation
   onsubmit = () => {
     // const nameval = /^[a-zA-Z][a-zA-Z ]*$/;
     if (
@@ -52,15 +57,18 @@ export default class App extends ValidateComponent {
 
   render() {
     return (
-		//for background Image
-      <ImageBackground source={Image} style={styles.backgroundImage}> 
-	{/* // for Scrolling */}
+      //for background Image
+      <ImageBackground source={Images} style={styles.backgroundImage}>
+        {/* // for Scrolling */}
         <ScrollView contentContainerStyle={styles.contentContainer}>
-	{/* Header View */}
+		  {/* Header View */}
+		  
           <View style={styles.container}>
+		  <Image source={Logo} style={{height:70,width:70,margin:20}}/>
+      <Text style={{fontStyle:"italic",color:'black'}}>Instagram</Text>
             <Text style={styles.header}>SIGN UP</Text>
           </View>
-	{/* form Attributes */}
+          {/* form Attributes */}
           <Text style={styles.textmargin}>USERNAME</Text>
           <View style={styles.container1}>
             <TextInput
@@ -107,7 +115,7 @@ export default class App extends ValidateComponent {
               // value={this.state.confirmpassword}
             />
           </View>
-	{/* Button For Confirm */}
+          {/* Button For Confirm */}
           <View style={styles.container1}>
             <TouchableOpacity style={styles.touch} onPress={this.onsubmit}>
               <Text style={styles.touchtext}> CONFIRM </Text>
@@ -116,7 +124,7 @@ export default class App extends ValidateComponent {
           <View style={styles.alreadyuser}>
             <Text style={{ color: "#fff" }}>already User? </Text>
             <TouchableOpacity>
-              <Text style={{ color: "#fff", textDecorationLine: "underline" }}>
+              <Text style={{ color: "#fff", textDecorationLine: "underline"}}>
                 Click Here
               </Text>
             </TouchableOpacity>
@@ -132,11 +140,16 @@ export default class App extends ValidateComponent {
               <Text style={{ color: "#fff" }}>Terms Of Service</Text>
             </TouchableOpacity>
           </View>
-        </ScrollView>
+		  <View style={{alignItems:'center',justifyContent:"center",flexDirection:"row",margin:20}}>
+		  <Image source={Copyright} style={{height:20,width:20}}/>
+		  <Text style={{color:'black'}}> Designed and Developed By Karan Joshi</Text>
+		  </View>
+	    </ScrollView>
       </ImageBackground>
     );
   }
 }
+
 // Stylesheet
 const styles = StyleSheet.create({
   backgroundImage: {
@@ -152,10 +165,9 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: "flex-start",
-    fontSize: 45,
-    margin: 20,
-    marginBottom: 30,
-    color: "#fff",
+    fontSize: 35,
+    marginBottom: 20,
+    color: "#7CFC00",
     fontWeight: "bold",
     fontFamily: "serif"
   },
@@ -165,8 +177,8 @@ const styles = StyleSheet.create({
     margin: 20,
     alignItems: "center",
     justifyContent: "center",
-    width: 190,
-    height: 40
+    width: "50%",
+   height: 40
   },
   touchtext: {
     fontSize: 15,
@@ -174,10 +186,8 @@ const styles = StyleSheet.create({
   },
   textInput: {
     backgroundColor: "#C0C0C0",
-    width: 300,
-    height: 40,
+    width: "75%",
     alignItems: "center",
-    fontSize: 15,
     borderRadius: 25,
     opacity: 0.8,
     color: "#fff",
@@ -199,9 +209,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 10
+    
   }
 });
+
 // inputs: {
 //   backgroundColor: "#fff",
 //   width: "90%",
